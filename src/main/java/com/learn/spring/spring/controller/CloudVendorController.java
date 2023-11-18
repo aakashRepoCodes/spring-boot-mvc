@@ -1,7 +1,9 @@
 package com.learn.spring.spring.controller;
 
+import com.learn.spring.spring.exception.CloudVendorNotFoundException;
 import com.learn.spring.spring.model.CloudVendor;
 import com.learn.spring.spring.repository.CloudVendorRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +20,10 @@ public class CloudVendorController {
 
     @GetMapping("{vendorId}")
     public CloudVendor getCloudVendor(@PathVariable String vendorId) {
+
+        if (cloudVendorRepository.findById(vendorId).isEmpty())
+            throw new CloudVendorNotFoundException("No Cloud Vendor exists with provided Id");
+
         return cloudVendorRepository.findById(vendorId).get();
     }
 

@@ -12,9 +12,7 @@ public class CloudVendor {
     public String vendorPhoneNumber;
     public String vendorAddress;
 
-    public CloudVendor(){
-
-    }
+    public CloudVendor(){}
 
     public CloudVendor(String vendorID, String vendorName, String vendorPhoneNumber, String vendorAddress) {
         this.vendorID = vendorID;

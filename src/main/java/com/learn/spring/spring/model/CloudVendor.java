@@ -1,14 +1,12 @@
 package com.learn.spring.spring.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jdk.jfr.Enabled;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-@Entity
+@Document
 public class CloudVendor {
 
-    @Id
+    @MongoId
     public String vendorID;
     public String vendorName;
     public String vendorPhoneNumber;

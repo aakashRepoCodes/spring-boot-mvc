@@ -3,25 +3,29 @@ package com.learn.spring.spring;
 import com.learn.spring.spring.model.CloudVendor;
 import com.learn.spring.spring.repository.CloudVendorRepository;
 import com.learn.spring.spring.service.CloudAPIService;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+@Service
 public class CloudAPIServiceImpl implements CloudAPIService {
 
-    private CloudVendorRepository  cloudVendorRepository;
+    CloudVendorRepository  cloudVendorRepository;
 
     public CloudAPIServiceImpl(CloudVendorRepository cloudVendorRepository) {
         this.cloudVendorRepository = cloudVendorRepository;
     }
 
     @Override
-    public CloudVendor createCloudVendor(CloudVendor cloudVendor) {
-        return cloudVendorRepository.save(cloudVendor);
+    public String createCloudVendor(CloudVendor cloudVendor) {
+        cloudVendorRepository.save(cloudVendor);
+        return "Vendor created successfully ... ";
     }
 
     @Override
     public CloudVendor getCloudVendorById(String id) {
-        return cloudVendorRepository.getReferenceById(id);
+        return cloudVendorRepository.findById(id).get();
     }
 
     @Override
@@ -30,7 +34,7 @@ public class CloudAPIServiceImpl implements CloudAPIService {
     }
 
     @Override
-    public String deleteCloudVendor(String id) {
+    public String deleteCloudVendor(@RequestParam String id) {
         cloudVendorRepository.deleteById(id);
         return "Vendor deleted Successfully... ";
     }

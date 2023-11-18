@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CloudAPIService {
 
-    public CloudVendor createCloudVendor(CloudVendor  cloudVendor);
+    public String createCloudVendor(CloudVendor  cloudVendor);
     public CloudVendor getCloudVendorById(String id);
     public CloudVendor updateCloudVendor(CloudVendor  cloudVendor);
     public String deleteCloudVendor(String id);

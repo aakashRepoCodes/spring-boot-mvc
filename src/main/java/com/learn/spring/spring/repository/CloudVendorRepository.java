@@ -1,7 +1,9 @@
 package com.learn.spring.spring.repository;
 
 import com.learn.spring.spring.model.CloudVendor;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-public interface CloudVendorRepository extends JpaRepository<CloudVendor, String > {
+@EnableMongoRepositories
+public interface CloudVendorRepository extends MongoRepository<CloudVendor, String > {
 }

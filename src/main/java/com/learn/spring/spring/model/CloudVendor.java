@@ -1,7 +1,14 @@
 package com.learn.spring.spring.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jdk.jfr.Enabled;
+
+@Entity
 public class CloudVendor {
 
+    @Id
     public String vendorID;
     public String vendorName;
     public String vendorPhoneNumber;

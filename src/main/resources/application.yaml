@@ -11,8 +11,20 @@ spring:
     password: admin
     jpa:
       hibernate:
-        ddl-auto: update
+       ddl-auto: update
       show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "caches"
+      base-path: "/app-dashboard"
+  endpoint:
+      health:
+        show-details: always
+
 
 logging:
   level:

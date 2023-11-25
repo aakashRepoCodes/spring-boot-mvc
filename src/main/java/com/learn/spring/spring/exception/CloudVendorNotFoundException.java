@@ -10,6 +10,4 @@ public class CloudVendorNotFoundException extends RuntimeException {
         super(message, throwable);
     }
 
-
-
 }

@@ -18,11 +18,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-		try {
-			boolean result = isRunningUp();
-		} catch (IOException ignored){
 
-		}
 	}
 
 	private void isRunningUp() throws IOException {

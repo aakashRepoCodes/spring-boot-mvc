@@ -3,6 +3,8 @@ package com.learn.spring.spring.controller;
 import com.learn.spring.spring.model.CloudVendor;
 import com.learn.spring.spring.repository.CloudVendorRepository;
 import com.learn.spring.spring.response.ResponseHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
@@ -23,6 +25,7 @@ public class CloudVendorController implements HealthIndicator {
     @Autowired
     Environment env;
 
+    private static final Logger logger =  LoggerFactory.getLogger(CloudVendor.class);
     CloudVendorRepository cloudVendorRepository;
 
     public CloudVendorController(CloudVendorRepository cloudVendorRepository) {
@@ -32,9 +35,10 @@ public class CloudVendorController implements HealthIndicator {
     @GetMapping("{vendorId}")
     public ResponseEntity<Object> getCloudVendor(@PathVariable String vendorId) {
 
-        if (cloudVendorRepository.findById(vendorId).isEmpty())
+        if (cloudVendorRepository.findById(vendorId).isEmpty()) {
+            logger.info("Requested vendor details not found:, HttpStatus.OK");
             return ResponseHandler.responseBuilder("Requested vendor details not found:", HttpStatus.OK, "");
-
+        }
         return ResponseHandler.responseBuilder("Requested vendor details :", HttpStatus.OK, cloudVendorRepository.findById(vendorId).get());
     }
 
